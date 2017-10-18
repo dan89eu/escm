@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -23,8 +24,8 @@ class Vertical extends Model
      * @var array
      */
     protected $casts = [
-        'name' => 'string',
-        'user_id' => 'integer'
+        'name' => 'string'
+
     ];
 
     /**
@@ -35,4 +36,14 @@ class Vertical extends Model
     public static $rules = [
         
     ];
+
+	public static function boot()
+	{
+		parent::boot();
+
+		static::creating(function($model)
+		{
+			$model->user_id = Sentinel::getUser()->id;
+		});
+	}
 }

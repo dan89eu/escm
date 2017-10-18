@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -15,8 +16,7 @@ class Beneficiary extends Model
 
     public $fillable = [
         'name',
-        'address',
-        'user_id'
+        'address'
     ];
 
     /**
@@ -26,8 +26,7 @@ class Beneficiary extends Model
      */
     protected $casts = [
         'name' => 'string',
-        'address' => 'string',
-        'user_id' => 'string'
+        'address' => 'string'
     ];
 
     /**
@@ -38,4 +37,14 @@ class Beneficiary extends Model
     public static $rules = [
         'name' => 'required'
     ];
+
+	public static function boot()
+	{
+		parent::boot();
+
+		static::creating(function($model)
+		{
+			$model->user_id = Sentinel::getUser()->id;
+		});
+	}
 }

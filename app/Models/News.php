@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -30,8 +31,7 @@ class News extends Model
         'name' => 'string',
         'url' => 'string',
         'description' => 'string',
-        'projects_id' => 'integer',
-        'user_id' => 'integer'
+        'projects_id' => 'integer'
     ];
 
     /**
@@ -43,4 +43,14 @@ class News extends Model
         'name' => 'required',
         'url' => 'required'
     ];
+
+	public static function boot()
+	{
+		parent::boot();
+
+		static::creating(function($model)
+		{
+			$model->user_id = Sentinel::getUser()->id;
+		});
+	}
 }
