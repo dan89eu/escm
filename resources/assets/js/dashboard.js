@@ -1,6 +1,50 @@
 
 // top menu
 
+var map5 = new GMaps({
+	div: "#gmap",
+	lat: 44.4267674,
+	lng: 26.1025383,
+	zoom: 15,
+	zoomControl : true,
+	zoomControlOpt: {
+		style : "SMALL",
+		position: "TOP_LEFT"
+	},
+	panControl : true,
+	streetViewControl : false,
+	mapTypeControl: false,
+	overviewMapControl: false
+});
+var styles = [
+	{
+		stylers: [
+			{ hue: "#00ffe6" },
+			{ saturation: -20 }
+		]
+	}, {
+		featureType: "road",
+		elementType: "geometry",
+		stylers: [
+			{ lightness: 100 },
+			{ visibility: "simplified" }
+		]
+	}, {
+		featureType: "road",
+		elementType: "labels",
+		stylers: [
+			{ visibility: "off" }
+		]
+	}
+];
+map5.addStyle({
+	styles: styles,
+	mapTypeId: "maps_style"
+});
+
+map5.setStyle("maps_style");
+
+
 var useOnComplete = false,
     useEasing = false,
     useGrouping = false,

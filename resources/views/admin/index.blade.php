@@ -14,6 +14,8 @@
     <meta name="_token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css"
           href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/gmaps/css/examples.css') }}"/>
+<link href="{{ asset('assets/css/pages/googlemaps_custom.css') }}" rel="stylesheet">
 
 @stop
 
@@ -146,6 +148,11 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 animated fadeInLeftBig">
+                <div id="gmap" class="gmap"></div>
+            </div>
+        </div>
         <!--/row-->
     </section>
 
@@ -155,6 +162,8 @@
 @section('footer_scripts')
     <script type="text/javascript" src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfNo1-CBPZt1Kg2MxAdEV23mzac6JYn2s&libraries=places"></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/gmaps/js/gmaps.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/vendors/countUp_js/js/countUp.js') }}"></script>
 

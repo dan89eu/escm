@@ -9,6 +9,9 @@ Projects
 
 <link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/gmaps/css/examples.css') }}"/>
+<link href="{{ asset('assets/css/pages/googlemaps_custom.css') }}" rel="stylesheet">
+<!--end of page level css-->
 <!--end of page level css-->
 @stop
 @section('content')
@@ -47,6 +50,9 @@ Projects
 {{-- page level scripts --}}
 @section('footer_scripts')
 <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfNo1-CBPZt1Kg2MxAdEV23mzac6JYn2s&libraries=places"></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/gmaps/js/gmaps.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/pages/custommaps.js') }}"></script>
 <script language="javascript" type="text/javascript">
 
 	$(".select2").select2({
