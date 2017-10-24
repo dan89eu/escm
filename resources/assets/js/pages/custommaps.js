@@ -67,6 +67,8 @@ $(function () {
 			return;
 		}
 
+		map5.removeMarkers();
+
 		map5.addMarker({
 			lat:place.geometry.location.lat(),
 			lng:place.geometry.location.lng(),
@@ -90,7 +92,10 @@ $(function () {
 		$("#g_place_id").val(place.place_id)
 		$("#g_locality_name").val(findTypes(place.address_components,"locality"))
 		$("#g_county_name").val(findTypes(place.address_components,"administrative_area_level_1"))
+		$("#g_country_name").val(findTypes(place.address_components,"country"))
 		$("#g_formatted_address").val(place.formatted_address)
+		$("#g_lat").val(place.geometry.location.lat())
+		$("#g_lng").val(place.geometry.location.lng())
 		console.log(place);
 		console.log(place.geometry.location.lat(),place.geometry.location.lng());
 	});

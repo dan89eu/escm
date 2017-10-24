@@ -82,10 +82,13 @@
     {!! Form::textarea('notes', null, ['class' => 'form-control', 'rows' => '5']) !!}
 </div>
 
-{!! Form::hidden('g_place_id', "ChIJ9-_WqPZJskARGZFlXpbmPws", ['class' => 'form-control','id'=>'g_place_id']) !!}
-{!! Form::hidden('g_locality_name', null, ['class' => 'form-control','id'=>'g_locality_name']) !!}
-{!! Form::hidden('g_county_name', null, ['class' => 'form-control','id'=>'g_county_name']) !!}
-{!! Form::hidden('g_formatted_address', 'Ploiesti, Romania', ['class' => 'form-control','id'=>'g_formatted_address']) !!}
+{!! Form::hidden('g_place_id', $project->location->place_id??null, ['class' => 'form-control','id'=>'g_place_id']) !!}
+{!! Form::hidden('g_locality_name', $project->location->locality_name??null, ['class' => 'form-control','id'=>'g_locality_name']) !!}
+{!! Form::hidden('g_county_name', $project->location->county_name??null, ['class' => 'form-control','id'=>'g_county_name']) !!}
+{!! Form::hidden('g_country_name', $project->location->country_name??null, ['class' => 'form-control','id'=>'g_country_name']) !!}
+{!! Form::hidden('g_lat', $project->location->lat??null, ['class' => 'form-control','id'=>'g_lat']) !!}
+{!! Form::hidden('g_lng', $project->location->lng??null, ['class' => 'form-control','id'=>'g_lng']) !!}
+{!! Form::hidden('g_formatted_address', $project->location->formatted_address??null, ['class' => 'form-control','id'=>'g_formatted_address']) !!}
 
 
 <!-- Submit Field -->

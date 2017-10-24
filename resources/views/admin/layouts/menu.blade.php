@@ -60,4 +60,3 @@
                Verticals
     </a>
 </li>
-

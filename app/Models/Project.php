@@ -89,4 +89,9 @@ class Project extends Model
 		return $this->hasMany(News::class);
 	}
 
+	public function location()
+	{
+		return $this->belongsTo(Location::class);
+	}
+
 }

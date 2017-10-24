@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Location;
 use App\Repositories\ProjectRepository;
 use App\Http\Controllers\AppBaseController as InfyOmBaseController;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
@@ -131,15 +132,22 @@ class ProjectController extends InfyOmBaseController
 
         $project = $this->projectRepository->update($request->all(), $id);
 
-	    $this->updateRelations($project);
+	    $this->updateRelations($project,$request);
 
         Flash::success('Project updated successfully.');
 
         return redirect(route('admin.projects.index'));
     }
 
-    private function updateRelations($project)
+    private function updateRelations($project,$request)
     {
+    	$location = Location::firstOrNew(['place_id'=>$request->get('g_place_id')],['formatted_address'=>$request->get('g_formatted_address'),'county_name'=>$request->get('g_county_name'),'country_name'=>$request->get('g_country_name'),'locality_name'=>$request->get('g_locality_name'),'lat'=>$request->get('g_lat'),'lng'=>$request->get('g_lng'),'user_id'=>Sentinel::getUser()->id]);
+
+	    if(!$location->id)
+	    	$location->save();
+
+	    $project->location()->associate($location);
+	    $project->save();
 
 	    $verticals  = (array) Input::get('verticals'); // related ids
 	    $pivotData = array_fill(0, count($verticals), ['user_id' => Sentinel::getUser()->id]);

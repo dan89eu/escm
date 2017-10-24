@@ -198,3 +198,18 @@ Route::get('projectVerticals/{projectVerticals}', ['as'=> 'projectVerticals.show
 Route::get('projectVerticals/{projectVerticals}/edit', ['as'=> 'projectVerticals.edit', 'uses' => 'project_verticalController@edit']);
 
 });
+
+
+Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
+
+Route::get('locations', ['as'=> 'locations.index', 'uses' => 'LocationController@index']);
+Route::post('locations', ['as'=> 'locations.store', 'uses' => 'LocationController@store']);
+Route::get('locations/create', ['as'=> 'locations.create', 'uses' => 'LocationController@create']);
+Route::put('locations/{locations}', ['as'=> 'locations.update', 'uses' => 'LocationController@update']);
+Route::patch('locations/{locations}', ['as'=> 'locations.update', 'uses' => 'LocationController@update']);
+Route::get('locations/{id}/delete', array('as' => 'locations.delete', 'uses' => 'LocationController@getDelete'));
+Route::get('locations/{id}/confirm-delete', array('as' => 'locations.confirm-delete', 'uses' => 'LocationController@getModalDelete'));
+Route::get('locations/{locations}', ['as'=> 'locations.show', 'uses' => 'LocationController@show']);
+Route::get('locations/{locations}/edit', ['as'=> 'locations.edit', 'uses' => 'LocationController@edit']);
+
+});
