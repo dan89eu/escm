@@ -44,6 +44,19 @@ map5.addStyle({
 
 map5.setStyle("maps_style");
 
+var bounds = []
+
+$.each(locations,function(key,val){
+	map5.addMarker({
+		lat: val.lat,
+		lng: val.lng,
+		title:val.formatted_address
+	})
+	bounds.push(new google.maps.LatLng(val.lat,val.lng));
+});
+map5.fitLatLngBounds(bounds);
+
+
 
 var useOnComplete = false,
     useEasing = false,

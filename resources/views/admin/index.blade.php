@@ -160,6 +160,9 @@
 
 {{-- page level scripts --}}
 @section('footer_scripts')
+<script>
+	var locations = {!! App\Models\Location::get() !!}
+</script>
     <script type="text/javascript" src="{{ asset('assets/vendors/moment/js/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfNo1-CBPZt1Kg2MxAdEV23mzac6JYn2s&libraries=places"></script>
@@ -168,5 +171,6 @@
     <script type="text/javascript" src="{{ asset('assets/vendors/countUp_js/js/countUp.js') }}"></script>
 
     <script src="{{ asset('assets/js/pages/dashboard.js') }}" type="text/javascript"></script>
+
 
 @stop
