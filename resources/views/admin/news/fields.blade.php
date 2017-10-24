@@ -3,7 +3,16 @@
     {!! Form::label('name', 'Name:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
-
+<!-- Projects Id Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('project_id', 'Project:') !!}
+    {!! Form::select('project_id', App\Models\Project::pluck('name','id'), null, ['class' => 'form-control select2', 'required']) !!}
+</div>
+<!-- Projects Id Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('project_id', 'Project:') !!}
+    {!! Form::select('project_id', App\Models\Project::pluck('name','id'), null, ['class' => 'form-control select2', 'required']) !!}
+</div>
 <!-- Url Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('url', 'Url:') !!}
@@ -13,20 +22,9 @@
 <!-- Description Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('description', 'Description:') !!}
-    {!! Form::text('description', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
 </div>
 
-<!-- Projects Id Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('projects_id', 'Projects Id:') !!}
-    {!! Form::number('projects_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- User Id Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12 text-center">

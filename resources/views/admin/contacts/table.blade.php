@@ -5,7 +5,8 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Department</th>
-        <th>User Id</th>
+         <th>Beneficiary</th>
+         <th>Provider</th>
         <th colspan="3">Action</th>
      </tr>
     </thead>
@@ -16,7 +17,8 @@
             <td>{!! $contact->email !!}</td>
             <td>{!! $contact->phone !!}</td>
             <td>{!! $contact->department !!}</td>
-            <td>{!! $contact->user_id !!}</td>
+            <td>{!! $contact->beneficiaries->name??"" !!}</td>
+            <td>{!! $contact->providers->name??"" !!}</td>
             <td>
                  <a href="{{ route('admin.contacts.show', $contact->id) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view contact"></i>

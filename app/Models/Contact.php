@@ -57,4 +57,14 @@ class Contact extends Model
 	}
 
 
+	public function beneficiaries()
+	{
+		return $this->belongsTo(Beneficiary::class);
+	}
+
+	public function providers()
+	{
+		return $this->belongsTo(Provider::class);
+	}
+
 }

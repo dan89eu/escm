@@ -58,4 +58,35 @@ class Project extends Model
 			$model->user_id = Sentinel::getUser()->id;
 		});
 	}
+
+	public function verticals()
+	{
+		return $this->belongsToMany(Vertical::class)->withTimestamps();
+	}
+
+	public function beneficiaries()
+	{
+		return $this->belongsToMany(Beneficiary::class)->withTimestamps();
+	}
+
+	public function providers()
+	{
+		return $this->belongsToMany(Provider::class)->withTimestamps();
+	}
+
+	public function infrastructures()
+	{
+		return $this->belongsToMany(Infrastructure::class)->withTimestamps();
+	}
+
+	public function images()
+	{
+		return $this->hasMany(Image::class);
+	}
+
+	public function news()
+	{
+		return $this->hasMany(News::class);
+	}
+
 }

@@ -11,7 +11,6 @@ class Beneficiary extends Model
 {
 
     public $table = 'beneficiaries';
-    
 
 
     public $fillable = [
@@ -38,13 +37,26 @@ class Beneficiary extends Model
         'name' => 'required'
     ];
 
+
+
 	public static function boot()
 	{
+
 		parent::boot();
 
 		static::creating(function($model)
 		{
 			$model->user_id = Sentinel::getUser()->id;
 		});
+	}
+
+	public function projects()
+	{
+		return $this->belongsToMany(Project::class)->withTimestamps();
+	}
+
+	public function contacts()
+	{
+		return $this->hasMany(Contact::class);
 	}
 }

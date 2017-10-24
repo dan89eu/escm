@@ -47,4 +47,14 @@ class Provider extends Model
 			$model->user_id = Sentinel::getUser()->id;
 		});
 	}
+
+	public function projects()
+	{
+		return $this->belongsToMany(Project::class)->withTimestamps();
+	}
+
+	public function contacts()
+	{
+		return $this->hasMany(Contact::class);
+	}
 }

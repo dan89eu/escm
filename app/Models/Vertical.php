@@ -46,4 +46,9 @@ class Vertical extends Model
 			$model->user_id = Sentinel::getUser()->id;
 		});
 	}
+
+	public function projects()
+	{
+		return $this->belongsToMany(Project::class)->withTimestamps();
+	}
 }

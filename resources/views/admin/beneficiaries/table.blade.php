@@ -3,7 +3,8 @@
      <tr>
         <th>Name</th>
         <th>Address</th>
-        <th>User Id</th>
+         <th>Created by</th>
+         <th>Created at</th>
         <th colspan="3">Action</th>
      </tr>
     </thead>
@@ -12,7 +13,8 @@
         <tr>
             <td>{!! $beneficiary->name !!}</td>
             <td>{!! $beneficiary->address !!}</td>
-            <td>{!! $beneficiary->user_id !!}</td>
+            <td>{!! App\User::find($beneficiary->user_id)->fullName !!}</td>
+            <td>{!! $beneficiary->created_at !!}</td>
             <td>
                  <a href="{{ route('admin.beneficiaries.show', $beneficiary->id) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view beneficiary"></i>

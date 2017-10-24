@@ -18,7 +18,7 @@ class News extends Model
         'name',
         'url',
         'description',
-        'projects_id',
+        'project_id',
         'user_id'
     ];
 
@@ -31,7 +31,7 @@ class News extends Model
         'name' => 'string',
         'url' => 'string',
         'description' => 'string',
-        'projects_id' => 'integer'
+        'project_id' => 'integer'
     ];
 
     /**
@@ -52,5 +52,10 @@ class News extends Model
 		{
 			$model->user_id = Sentinel::getUser()->id;
 		});
+	}
+
+	public function projects()
+	{
+		return $this->belongsTo(Project::class,'project_id','id');
 	}
 }

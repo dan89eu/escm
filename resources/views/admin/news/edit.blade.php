@@ -4,6 +4,13 @@
 News
 @parent
 @stop
+{{-- page level styles --}}
+@section('header_styles')
+
+<link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet" />
+<!--end of page level css-->
+@stop
 @section('content')
   @include('core-templates::common.errors')
     <section class="content-header">
@@ -37,3 +44,16 @@ News
     </div>
    </section>
  @stop
+{{-- page level scripts --}}
+@section('footer_scripts')
+<script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+<script language="javascript" type="text/javascript">
+
+	$(".select2").select2({
+		theme:"bootstrap",
+		placeholder:"Select a value"
+	});
+
+</script>
+
+@stop

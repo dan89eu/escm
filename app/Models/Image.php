@@ -17,8 +17,7 @@ class Image extends Model
     public $fillable = [
         'name',
         'path',
-        'description',
-        'project_id'
+        'description'
     ];
 
     /**
@@ -29,8 +28,7 @@ class Image extends Model
     protected $casts = [
         'name' => 'string',
         'path' => 'string',
-        'description' => 'string',
-        'project_id' => 'integer'
+        'description' => 'string'
     ];
 
     /**
@@ -50,5 +48,10 @@ class Image extends Model
 		{
 			$model->user_id = Sentinel::getUser()->id;
 		});
+	}
+
+	public function projects()
+	{
+		return $this->belongsTo(Project::class);
 	}
 }

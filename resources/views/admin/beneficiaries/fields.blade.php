@@ -10,12 +10,6 @@
     {!! Form::text('address', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- User Id Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::text('user_id', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12 text-center">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

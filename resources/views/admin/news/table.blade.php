@@ -3,7 +3,8 @@
      <tr>
         <th>Name</th>
         <th>Url</th>
-        <th>Projects Id</th>
+         <th>Project</th>
+         <th>Date created</th>
         <th colspan="3">Action</th>
      </tr>
     </thead>
@@ -12,7 +13,8 @@
         <tr>
             <td>{!! $news->name !!}</td>
             <td>{!! $news->url !!}</td>
-            <td>{!! $news->projects_id !!}</td>
+            <td>{!! $news->projects->name !!}</td>
+            <td>{!! $news->created_at !!}</td>
             <td>
                  <a href="{{ route('admin.news.show', $news->id) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view news"></i>

@@ -7,7 +7,9 @@ use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Repositories\ProjectRepository;
 use App\Http\Controllers\AppBaseController as InfyOmBaseController;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
 use App\Models\Project;
 use Flash;
@@ -62,7 +64,9 @@ class ProjectController extends InfyOmBaseController
 
         $project = $this->projectRepository->create($input);
 
-        Flash::success('Project saved successfully.');
+	    $this->updateRelations($project);
+
+	    Flash::success('Project saved successfully.');
 
         return redirect(route('admin.projects.index'));
     }
@@ -119,8 +123,6 @@ class ProjectController extends InfyOmBaseController
     {
         $project = $this->projectRepository->findWithoutFail($id);
 
-        
-
         if (empty($project)) {
             Flash::error('Project not found');
 
@@ -129,9 +131,37 @@ class ProjectController extends InfyOmBaseController
 
         $project = $this->projectRepository->update($request->all(), $id);
 
+	    $this->updateRelations($project);
+
         Flash::success('Project updated successfully.');
 
         return redirect(route('admin.projects.index'));
+    }
+
+    private function updateRelations($project)
+    {
+
+	    $verticals  = (array) Input::get('verticals'); // related ids
+	    $pivotData = array_fill(0, count($verticals), ['user_id' => Sentinel::getUser()->id]);
+	    $syncVerticals  = array_combine($verticals, $pivotData);
+
+	    $beneficiaries  = (array) Input::get('beneficiaries'); // related ids
+	    $pivotData = array_fill(0, count($beneficiaries), ['user_id' => Sentinel::getUser()->id]);
+	    $syncBeneficiaries  = array_combine($beneficiaries, $pivotData);
+
+	    $providers  = (array) Input::get('providers'); // related ids
+	    $pivotData = array_fill(0, count($providers), ['user_id' => Sentinel::getUser()->id]);
+	    $syncProviders  = array_combine($providers, $pivotData);
+
+	    $infrastucture  = (array) Input::get('infrastructures'); // related ids
+	    $pivotData = array_fill(0, count($infrastucture), ['user_id' => Sentinel::getUser()->id]);
+	    $syncInfrastucture  = array_combine($infrastucture, $pivotData);
+
+	    $project->verticals()->sync($syncVerticals);
+	    $project->beneficiaries()->sync($syncBeneficiaries);
+	    $project->providers()->sync($syncProviders);
+	    $project->infrastructures()->sync($syncInfrastucture);
+
     }
 
     /**
