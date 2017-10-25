@@ -149,7 +149,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 animated fadeInLeftBig">
+            <div class="col-md-12 animated fadeInUpBig">
                 <div id="gmap" class="gmap"></div>
             </div>
         </div>
