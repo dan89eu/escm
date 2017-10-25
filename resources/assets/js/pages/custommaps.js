@@ -145,7 +145,10 @@ $(function () {
 		});
 	}
 
-	geocodePlaceId($('#g_place_id').val());
+	console.log($('#g_place_id').val().length);
+
+	if($('#g_place_id').val().length>1)
+		geocodePlaceId($('#g_place_id').val());
 
 
     //map5.map
