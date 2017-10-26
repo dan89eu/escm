@@ -94,4 +94,9 @@ class Project extends Model
 		return $this->belongsTo(Location::class);
 	}
 
+	public function conectivities()
+	{
+		return $this->belongsToMany(Conectivity::class)->withTimestamps();
+	}
+
 }

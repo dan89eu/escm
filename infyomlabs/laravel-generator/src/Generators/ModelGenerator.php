@@ -75,11 +75,11 @@ class ModelGenerator extends BaseGenerator
     private function fillSoftDeletes($templateData)
     {
 
-	    if (!$this->commandData->getOption('softDelete')) {
+	    /*if (!$this->commandData->getOption('softDelete')) {
             $templateData = str_replace('$SOFT_DELETE_IMPORT$', '', $templateData);
             $templateData = str_replace('$SOFT_DELETE$', '', $templateData);
             $templateData = str_replace('$SOFT_DELETE_DATES$', '', $templateData);
-        } else {
+        } else {*/
             $templateData = str_replace(
                 '$SOFT_DELETE_IMPORT$', "use Illuminate\\Database\\Eloquent\\SoftDeletes;\n",
                 $templateData
@@ -90,7 +90,7 @@ class ModelGenerator extends BaseGenerator
                 '$SOFT_DELETE_DATES$', infy_nl_tab() . "protected \$dates = ['" . $deletedAtTimestamp . "'];\n",
                 $templateData
             );
-        }
+        //}
 
         return $templateData;
     }

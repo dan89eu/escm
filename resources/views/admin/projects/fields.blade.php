@@ -14,6 +14,11 @@
     {!! Form::label('verticals', 'Verticala:') !!}
     {!! Form::select('verticals[]', App\Models\Vertical::pluck('name','id'), null, ['class' => 'form-control select2','multiple', 'required']) !!}
 </div>
+<!-- Connectivity Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('conectivities', 'Connectivities:') !!}
+    {!! Form::select('conectivities[]', App\Models\Conectivity::pluck('name','id'), null, ['class' => 'form-control select2','multiple', 'required']) !!}
+</div>
 
 <!-- Beneficiaries Field -->
 <div class="form-group col-sm-12">

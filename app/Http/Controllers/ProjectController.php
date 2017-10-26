@@ -149,6 +149,10 @@ class ProjectController extends InfyOmBaseController
 	    $project->location()->associate($location);
 	    $project->save();
 
+	    $connectivities  = (array) Input::get('conectivities'); // related ids
+	    $pivotData = array_fill(0, count($connectivities), ['user_id' => Sentinel::getUser()->id]);
+	    $syncConnectivities  = array_combine($connectivities, $pivotData);
+
 	    $verticals  = (array) Input::get('verticals'); // related ids
 	    $pivotData = array_fill(0, count($verticals), ['user_id' => Sentinel::getUser()->id]);
 	    $syncVerticals  = array_combine($verticals, $pivotData);
@@ -165,6 +169,7 @@ class ProjectController extends InfyOmBaseController
 	    $pivotData = array_fill(0, count($infrastucture), ['user_id' => Sentinel::getUser()->id]);
 	    $syncInfrastucture  = array_combine($infrastucture, $pivotData);
 
+	    $project->conectivities()->sync($syncConnectivities);
 	    $project->verticals()->sync($syncVerticals);
 	    $project->beneficiaries()->sync($syncBeneficiaries);
 	    $project->providers()->sync($syncProviders);

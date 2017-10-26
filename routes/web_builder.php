@@ -213,3 +213,18 @@ Route::get('locations/{locations}', ['as'=> 'locations.show', 'uses' => 'Locatio
 Route::get('locations/{locations}/edit', ['as'=> 'locations.edit', 'uses' => 'LocationController@edit']);
 
 });
+
+
+Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
+
+Route::get('conectivities', ['as'=> 'conectivities.index', 'uses' => 'ConectivityController@index']);
+Route::post('conectivities', ['as'=> 'conectivities.store', 'uses' => 'ConectivityController@store']);
+Route::get('conectivities/create', ['as'=> 'conectivities.create', 'uses' => 'ConectivityController@create']);
+Route::put('conectivities/{conectivities}', ['as'=> 'conectivities.update', 'uses' => 'ConectivityController@update']);
+Route::patch('conectivities/{conectivities}', ['as'=> 'conectivities.update', 'uses' => 'ConectivityController@update']);
+Route::get('conectivities/{id}/delete', array('as' => 'conectivities.delete', 'uses' => 'ConectivityController@getDelete'));
+Route::get('conectivities/{id}/confirm-delete', array('as' => 'conectivities.confirm-delete', 'uses' => 'ConectivityController@getModalDelete'));
+Route::get('conectivities/{conectivities}', ['as'=> 'conectivities.show', 'uses' => 'ConectivityController@show']);
+Route::get('conectivities/{conectivities}/edit', ['as'=> 'conectivities.edit', 'uses' => 'ConectivityController@edit']);
+
+});

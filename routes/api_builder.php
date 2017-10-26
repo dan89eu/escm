@@ -86,3 +86,10 @@ Route::get('admin/verticals/{verticals}', 'VerticalAPIController@show');
 Route::put('admin/verticals/{verticals}', 'VerticalAPIController@update');
 Route::patch('admin/verticals/{verticals}', 'VerticalAPIController@update');
 Route::delete('admin/verticals{verticals}', 'VerticalAPIController@destroy');
+
+Route::get('admin/conectivities', 'ConectivityAPIController@index');
+Route::post('admin/conectivities', 'ConectivityAPIController@store');
+Route::get('admin/conectivities/{conectivities}', 'ConectivityAPIController@show');
+Route::put('admin/conectivities/{conectivities}', 'ConectivityAPIController@update');
+Route::patch('admin/conectivities/{conectivities}', 'ConectivityAPIController@update');
+Route::delete('admin/conectivities{conectivities}', 'ConectivityAPIController@destroy');

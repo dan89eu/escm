@@ -59,10 +59,9 @@ class MigrationGenerator extends BaseGenerator
 
         $fields[] = '$table->timestamps();';
 
-
-	    if ($this->commandData->getOption('softDelete')) {
+	    //if ($this->commandData->getOption('softDelete')) {
             $fields[] = '$table->softDeletes();';
-        }
+        //}
 
         return implode(infy_nl_tab(1, 3), $fields);
     }
