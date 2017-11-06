@@ -553,7 +553,7 @@ mix.copy(srcJs + 'pages/custom_sweetalert.js', destJs + 'pages');
 mix.copy(paths.gmaps + 'examples/examples.css', destVendors + 'gmaps/css');
 mix.copy(paths.gmaps + 'gmaps.min.js', destVendors + 'gmaps/js');
 mix.copy( srcJs + 'pages/maps_api.js',destJs + 'pages');
-mix.copy( srcJs + 'pages/custommaps.js',destJs + 'pages');
+mix.copy( srcJs + 'pages/custommaps.js',destJs + 'pages').version();
 mix.copy( srcJs + 'pages/adv_maps.js',destJs + 'pages');
 
 //  bower-jvectormap
@@ -627,7 +627,7 @@ mix.copy( srcCss + 'only_dashboard.css', destCss + 'pages');
 mix.copy( srcJs + 'tasklist.js', destJs + 'pages');
 
 // indexpage
-mix.copy( srcJs + 'dashboard.js', destJs + 'pages');
+mix.copy( srcJs + 'dashboard.js', destJs + 'pages').version();
 mix.copy( srcJs + 'todolist.js', destJs + 'pages');
 
 //compose page

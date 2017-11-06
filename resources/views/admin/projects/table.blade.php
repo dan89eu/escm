@@ -3,8 +3,7 @@
      <tr>
         <th>Name</th>
         <th>Initialcost</th>
-        <th>Contracting Date</th>
-        <th>Eta Delivery Date</th>
+        <th>Delivery Date</th>
         <th colspan="3">Action</th>
      </tr>
     </thead>
@@ -13,8 +12,7 @@
         <tr>
             <td>{!! $project->name !!}</td>
             <td>{!! $project->initialCost !!}</td>
-            <td>{!! $project->contracting_date !!}</td>
-            <td>{!! $project->eta_delivery_date !!}</td>
+            <td>{!! $project->final_delivery_date !!}</td>
             <td>
                  <a href="{{ route('admin.projects.show', $project->id) }}">
                      <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view project"></i>

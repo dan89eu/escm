@@ -170,7 +170,7 @@
 
     <script type="text/javascript" src="{{ asset('assets/vendors/countUp_js/js/countUp.js') }}"></script>
 
-    <script src="{{ asset('assets/js/pages/dashboard.js') }}" type="text/javascript"></script>
+    <script src="{{ mix('assets/js/pages/dashboard.js') }}" type="text/javascript"></script>
 
 
 @stop

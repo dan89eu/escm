@@ -40,24 +40,24 @@
 
 <!-- Initialcost Field -->
 <div class="form-group col-sm-12">
-    {!! Form::label('initialCost', 'Initial cost (EUR):') !!}
+    {!! Form::label('initialCost', 'Estimated cost (EUR):') !!}
     {!! Form::text('initialCost', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Finalcost Field -->
-<div class="form-group col-sm-12">
+<div class="form-group col-sm-12 hide">
     {!! Form::label('finalCost', 'Final cost (EUR):') !!}
     {!! Form::text('finalCost', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Contracting Date Field -->
-<div class="form-group col-sm-12">
+<div class="form-group col-sm-12 hide">
     {!! Form::label('contracting_date', 'Contracting Date:') !!}
     {!! Form::date('contracting_date', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Eta Delivery Date Field -->
-<div class="form-group col-sm-12">
+<div class="form-group col-sm-12 hide">
     {!! Form::label('eta_delivery_date', 'Eta Delivery Date:') !!}
     {!! Form::date('eta_delivery_date', null, ['class' => 'form-control']) !!}
 </div>

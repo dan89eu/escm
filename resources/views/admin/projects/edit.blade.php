@@ -51,7 +51,7 @@ Projects
 <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfNo1-CBPZt1Kg2MxAdEV23mzac6JYn2s&libraries=places"></script>
 <script type="text/javascript" src="{{ asset('assets/vendors/gmaps/js/gmaps.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/pages/custommaps.js') }}"></script>
+<script type="text/javascript" src="{{ mix('assets/js/pages/custommaps.js') }}"></script>
 <script language="javascript" type="text/javascript">
 
 	$(".select2").select2({
