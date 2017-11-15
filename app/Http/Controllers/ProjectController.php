@@ -65,7 +65,7 @@ class ProjectController extends InfyOmBaseController
 
         $project = $this->projectRepository->create($input);
 
-	    $this->updateRelations($project);
+	    $this->updateRelations($project,$request);
 
 	    Flash::success('Project saved successfully.');
 

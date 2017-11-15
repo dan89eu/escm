@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class ConectivityProject extends Pivot
 {
-
     public $table = 'conectivity_project';
-
 
 	public static function boot()
 	{
