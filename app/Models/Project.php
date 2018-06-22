@@ -23,7 +23,10 @@ class Project extends Model
         'final_delivery_date',
         'gps_location',
         'details',
-        'notes'
+        'notes',
+	    'status',
+	    'quantity',
+	    'quality_indicators'
     ];
 
     /**

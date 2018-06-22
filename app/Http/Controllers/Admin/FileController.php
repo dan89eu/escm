@@ -7,6 +7,7 @@ use App\File;
 use App\Helpers\Thumbnail;
 use App\Http\Requests;
 use App\Http\Requests\FileUploadRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Response;
@@ -27,7 +28,7 @@ class FileController extends JoshController {
 
         $file_temp = $request->file('file');
         $extension       = $file_temp->getClientOriginalExtension() ?: 'png';
-        $safeName        = str_random(10).'.'.$extension;
+        $safeName        = $file_temp->getClientOriginalName().'-'.Carbon::now()->format("YmdHis").'.'.$extension;
 
         $fileItem = new File();
         $fileItem->filename = $safeName;
@@ -36,7 +37,7 @@ class FileController extends JoshController {
 
         $file_temp->move($destinationPath, $safeName);
 
-        Thumbnail::generate_image_thumbnail($destinationPath . $safeName, $destinationPath . 'thumb_' . $safeName);
+        //Thumbnail::generate_image_thumbnail($destinationPath . $safeName, $destinationPath . 'thumb_' . $safeName);
 
         return $fileItem->toJson();
     }
@@ -53,7 +54,8 @@ class FileController extends JoshController {
 
         $file_temp = $request->file('file');
         $extension  = $file_temp->getClientOriginalExtension() ?: 'png';
-        $safeName        = str_random(10).'.'.$extension;
+
+	    $safeName        = $file_temp->getClientOriginalName().'-'.Carbon::now()->format("YmdHis").'.'.$extension;
 
         $fileItem = new File();
         $fileItem->filename = $safeName;
@@ -62,13 +64,12 @@ class FileController extends JoshController {
 
         $file_temp->move($destinationPath, $safeName);
 
-        Thumbnail::generate_image_thumbnail($destinationPath . $safeName, $destinationPath . 'thumb_' . $safeName);
+        //Thumbnail::generate_image_thumbnail($destinationPath . $safeName, $destinationPath . 'thumb_' . $safeName);
 
         $success = new stdClass();
         $success->name = $safeName;
         $success->size = $file_temp->getClientSize();
         $success->url =  URL::to('/uploads/files/'.$safeName);
-        $success->thumbnailUrl =  URL::to('/uploads/files/thumb_'.$safeName);
         $success->deleteUrl = URL::to('admin/file/delete?_token='.csrf_token().'&id='.$fileItem->id);
         $success->deleteType = 'DELETE';
         $success->fileID = $fileItem->id;
@@ -83,7 +84,6 @@ class FileController extends JoshController {
             $upload->delete();
 
             unlink(public_path('uploads/files/'.$upload->filename));
-            unlink(public_path('uploads/files/thumb_'.$upload->filename));
 
             if(!isset(File::find($request->id)->filename)) {
                 $success = new stdClass();

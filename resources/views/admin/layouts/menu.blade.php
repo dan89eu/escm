@@ -1,3 +1,18 @@
+<li class="{{ Request::is('projects*') ? 'active' : '' }}">
+    <a href="{!! route('admin.projects.index') !!}">
+        <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="thumbnails-big" data-size="18"
+           data-loop="true"></i>
+        Projects
+    </a>
+</li>
+
+<li {!! (Request::is('admin/projects/import') ? 'class="active"' : '') !!}>
+    <a href="{{ URL::to('admin/projects/import') }}">
+        <i class="fa fa-angle-double-right"></i>
+        Project Import
+    </a>
+</li>
+
 <li class="{{ Request::is('infrastructures*') ? 'active' : '' }}">
     <a href="{!! route('admin.infrastructures.index') !!}">
     <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="servers" data-size="18"
@@ -10,14 +25,6 @@
     <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="shield" data-size="18"
                data-loop="true"></i>
                Providers
-    </a>
-</li>
-
-<li class="{{ Request::is('projects*') ? 'active' : '' }}">
-    <a href="{!! route('admin.projects.index') !!}">
-    <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="thumbnails-big" data-size="18"
-               data-loop="true"></i>
-               Projects
     </a>
 </li>
 
@@ -67,4 +74,21 @@
                Conectivities
     </a>
 </li>
+
+<li class="{{ Request::is('categories*') ? 'active' : '' }}">
+    <a href="{!! route('admin.categories.index') !!}">
+    <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="bank" data-size="18"
+               data-loop="true"></i>
+               Categories
+    </a>
+</li>
+
+<li class="{{ Request::is('categoryProjects*') ? 'active' : '' }}">
+    <a href="{!! route('admin.categoryProjects.index') !!}">
+    <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="desktop" data-size="18"
+               data-loop="true"></i>
+               CategoryProjects
+    </a>
+</li>
+
 

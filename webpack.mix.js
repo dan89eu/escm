@@ -148,7 +148,7 @@ const paths = {
     'sweetalert' : vendors + 'sweetalert/dist/',
     'jstree': vendors + 'jstree/dist/',
     'hover': vendors + 'hover/css/',
-    'jeditable': vendors + 'jeditable/js/',
+    'jeditable': vendors + 'jeditable/src/',
     'd3' : vendors + 'd3/',
     'morrisjs' : vendors + 'morris.js/',
     'd3pie' : vendors + 'd3pie/',

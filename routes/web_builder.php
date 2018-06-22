@@ -34,27 +34,14 @@ Route::get('providers/{providers}/edit', ['as'=> 'providers.edit', 'uses' => 'Pr
 
 });
 
-
-Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
-
-Route::get('providers', ['as'=> 'providers.index', 'uses' => 'ProviderController@index']);
-Route::post('providers', ['as'=> 'providers.store', 'uses' => 'ProviderController@store']);
-Route::get('providers/create', ['as'=> 'providers.create', 'uses' => 'ProviderController@create']);
-Route::put('providers/{providers}', ['as'=> 'providers.update', 'uses' => 'ProviderController@update']);
-Route::patch('providers/{providers}', ['as'=> 'providers.update', 'uses' => 'ProviderController@update']);
-Route::get('providers/{id}/delete', array('as' => 'providers.delete', 'uses' => 'ProviderController@getDelete'));
-Route::get('providers/{id}/confirm-delete', array('as' => 'providers.confirm-delete', 'uses' => 'ProviderController@getModalDelete'));
-Route::get('providers/{providers}', ['as'=> 'providers.show', 'uses' => 'ProviderController@show']);
-Route::get('providers/{providers}/edit', ['as'=> 'providers.edit', 'uses' => 'ProviderController@edit']);
-
-});
-
-
 Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
 
 Route::get('projects', ['as'=> 'projects.index', 'uses' => 'ProjectController@index']);
 Route::post('projects', ['as'=> 'projects.store', 'uses' => 'ProjectController@store']);
-Route::get('projects/create', ['as'=> 'projects.create', 'uses' => 'ProjectController@create']);
+	Route::get('projects/create', ['as'=> 'projects.create', 'uses' => 'ProjectController@create']);
+	Route::get('projects/import', ['as'=> 'projects.import', 'uses' => 'ProjectController@import']);
+	Route::get('projects/importpreview/{file}', ['as'=> 'projects.importpreview', 'uses' => 'ProjectController@importPreview']);
+	Route::post('projects/import/{file}', ['as'=> 'projects.import.store', 'uses' => 'ProjectController@importStore']);
 Route::put('projects/{projects}', ['as'=> 'projects.update', 'uses' => 'ProjectController@update']);
 Route::patch('projects/{projects}', ['as'=> 'projects.update', 'uses' => 'ProjectController@update']);
 Route::get('projects/{id}/delete', array('as' => 'projects.delete', 'uses' => 'ProjectController@getDelete'));
@@ -142,51 +129,6 @@ Route::get('verticals/{verticals}/edit', ['as'=> 'verticals.edit', 'uses' => 'Ve
 
 Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
 
-Route::get('verticals', ['as'=> 'verticals.index', 'uses' => 'VerticalController@index']);
-Route::post('verticals', ['as'=> 'verticals.store', 'uses' => 'VerticalController@store']);
-Route::get('verticals/create', ['as'=> 'verticals.create', 'uses' => 'VerticalController@create']);
-Route::put('verticals/{verticals}', ['as'=> 'verticals.update', 'uses' => 'VerticalController@update']);
-Route::patch('verticals/{verticals}', ['as'=> 'verticals.update', 'uses' => 'VerticalController@update']);
-Route::get('verticals/{id}/delete', array('as' => 'verticals.delete', 'uses' => 'VerticalController@getDelete'));
-Route::get('verticals/{id}/confirm-delete', array('as' => 'verticals.confirm-delete', 'uses' => 'VerticalController@getModalDelete'));
-Route::get('verticals/{verticals}', ['as'=> 'verticals.show', 'uses' => 'VerticalController@show']);
-Route::get('verticals/{verticals}/edit', ['as'=> 'verticals.edit', 'uses' => 'VerticalController@edit']);
-
-});
-
-
-Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
-
-Route::get('verticals', ['as'=> 'verticals.index', 'uses' => 'VerticalController@index']);
-Route::post('verticals', ['as'=> 'verticals.store', 'uses' => 'VerticalController@store']);
-Route::get('verticals/create', ['as'=> 'verticals.create', 'uses' => 'VerticalController@create']);
-Route::put('verticals/{verticals}', ['as'=> 'verticals.update', 'uses' => 'VerticalController@update']);
-Route::patch('verticals/{verticals}', ['as'=> 'verticals.update', 'uses' => 'VerticalController@update']);
-Route::get('verticals/{id}/delete', array('as' => 'verticals.delete', 'uses' => 'VerticalController@getDelete'));
-Route::get('verticals/{id}/confirm-delete', array('as' => 'verticals.confirm-delete', 'uses' => 'VerticalController@getModalDelete'));
-Route::get('verticals/{verticals}', ['as'=> 'verticals.show', 'uses' => 'VerticalController@show']);
-Route::get('verticals/{verticals}/edit', ['as'=> 'verticals.edit', 'uses' => 'VerticalController@edit']);
-
-});
-
-
-Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
-
-Route::get('verticals', ['as'=> 'verticals.index', 'uses' => 'VerticalController@index']);
-Route::post('verticals', ['as'=> 'verticals.store', 'uses' => 'VerticalController@store']);
-Route::get('verticals/create', ['as'=> 'verticals.create', 'uses' => 'VerticalController@create']);
-Route::put('verticals/{verticals}', ['as'=> 'verticals.update', 'uses' => 'VerticalController@update']);
-Route::patch('verticals/{verticals}', ['as'=> 'verticals.update', 'uses' => 'VerticalController@update']);
-Route::get('verticals/{id}/delete', array('as' => 'verticals.delete', 'uses' => 'VerticalController@getDelete'));
-Route::get('verticals/{id}/confirm-delete', array('as' => 'verticals.confirm-delete', 'uses' => 'VerticalController@getModalDelete'));
-Route::get('verticals/{verticals}', ['as'=> 'verticals.show', 'uses' => 'VerticalController@show']);
-Route::get('verticals/{verticals}/edit', ['as'=> 'verticals.edit', 'uses' => 'VerticalController@edit']);
-
-});
-
-
-Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
-
 Route::get('projectVerticals', ['as'=> 'projectVerticals.index', 'uses' => 'project_verticalController@index']);
 Route::post('projectVerticals', ['as'=> 'projectVerticals.store', 'uses' => 'project_verticalController@store']);
 Route::get('projectVerticals/create', ['as'=> 'projectVerticals.create', 'uses' => 'project_verticalController@create']);
@@ -226,5 +168,35 @@ Route::get('conectivities/{id}/delete', array('as' => 'conectivities.delete', 'u
 Route::get('conectivities/{id}/confirm-delete', array('as' => 'conectivities.confirm-delete', 'uses' => 'ConectivityController@getModalDelete'));
 Route::get('conectivities/{conectivities}', ['as'=> 'conectivities.show', 'uses' => 'ConectivityController@show']);
 Route::get('conectivities/{conectivities}/edit', ['as'=> 'conectivities.edit', 'uses' => 'ConectivityController@edit']);
+
+});
+
+
+Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
+
+Route::get('categories', ['as'=> 'categories.index', 'uses' => 'CategoryController@index']);
+Route::post('categories', ['as'=> 'categories.store', 'uses' => 'CategoryController@store']);
+Route::get('categories/create', ['as'=> 'categories.create', 'uses' => 'CategoryController@create']);
+Route::put('categories/{categories}', ['as'=> 'categories.update', 'uses' => 'CategoryController@update']);
+Route::patch('categories/{categories}', ['as'=> 'categories.update', 'uses' => 'CategoryController@update']);
+Route::get('categories/{id}/delete', array('as' => 'categories.delete', 'uses' => 'CategoryController@getDelete'));
+Route::get('categories/{id}/confirm-delete', array('as' => 'categories.confirm-delete', 'uses' => 'CategoryController@getModalDelete'));
+Route::get('categories/{categories}', ['as'=> 'categories.show', 'uses' => 'CategoryController@show']);
+Route::get('categories/{categories}/edit', ['as'=> 'categories.edit', 'uses' => 'CategoryController@edit']);
+
+});
+
+
+Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
+
+Route::get('categoryProjects', ['as'=> 'categoryProjects.index', 'uses' => 'Category_projectController@index']);
+Route::post('categoryProjects', ['as'=> 'categoryProjects.store', 'uses' => 'Category_projectController@store']);
+Route::get('categoryProjects/create', ['as'=> 'categoryProjects.create', 'uses' => 'Category_projectController@create']);
+Route::put('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.update', 'uses' => 'Category_projectController@update']);
+Route::patch('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.update', 'uses' => 'Category_projectController@update']);
+Route::get('categoryProjects/{id}/delete', array('as' => 'categoryProjects.delete', 'uses' => 'Category_projectController@getDelete'));
+Route::get('categoryProjects/{id}/confirm-delete', array('as' => 'categoryProjects.confirm-delete', 'uses' => 'Category_projectController@getModalDelete'));
+Route::get('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.show', 'uses' => 'Category_projectController@show']);
+Route::get('categoryProjects/{categoryProjects}/edit', ['as'=> 'categoryProjects.edit', 'uses' => 'Category_projectController@edit']);
 
 });

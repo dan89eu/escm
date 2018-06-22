@@ -197,6 +197,7 @@ return [
         \InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class,
 	    Barryvdh\Debugbar\ServiceProvider::class,
 	    Yajra\DataTables\DataTablesServiceProvider::class,
+	    Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -258,6 +259,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'Datatables' => Yajra\DataTables\Facades\DataTables::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

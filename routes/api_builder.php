@@ -24,13 +24,6 @@ Route::put('admin/providers/{providers}', 'ProviderAPIController@update');
 Route::patch('admin/providers/{providers}', 'ProviderAPIController@update');
 Route::delete('admin/providers{providers}', 'ProviderAPIController@destroy');
 
-Route::get('admin/providers', 'ProviderAPIController@index');
-Route::post('admin/providers', 'ProviderAPIController@store');
-Route::get('admin/providers/{providers}', 'ProviderAPIController@show');
-Route::put('admin/providers/{providers}', 'ProviderAPIController@update');
-Route::patch('admin/providers/{providers}', 'ProviderAPIController@update');
-Route::delete('admin/providers{providers}', 'ProviderAPIController@destroy');
-
 Route::get('admin/projects', 'ProjectAPIController@index');
 Route::post('admin/projects', 'ProjectAPIController@store');
 Route::get('admin/projects/{projects}', 'ProjectAPIController@show');
@@ -73,23 +66,24 @@ Route::put('admin/verticals/{verticals}', 'VerticalAPIController@update');
 Route::patch('admin/verticals/{verticals}', 'VerticalAPIController@update');
 Route::delete('admin/verticals{verticals}', 'VerticalAPIController@destroy');
 
-Route::get('admin/verticals', 'VerticalAPIController@index');
-Route::post('admin/verticals', 'VerticalAPIController@store');
-Route::get('admin/verticals/{verticals}', 'VerticalAPIController@show');
-Route::put('admin/verticals/{verticals}', 'VerticalAPIController@update');
-Route::patch('admin/verticals/{verticals}', 'VerticalAPIController@update');
-Route::delete('admin/verticals{verticals}', 'VerticalAPIController@destroy');
-
-Route::get('admin/verticals', 'VerticalAPIController@index');
-Route::post('admin/verticals', 'VerticalAPIController@store');
-Route::get('admin/verticals/{verticals}', 'VerticalAPIController@show');
-Route::put('admin/verticals/{verticals}', 'VerticalAPIController@update');
-Route::patch('admin/verticals/{verticals}', 'VerticalAPIController@update');
-Route::delete('admin/verticals{verticals}', 'VerticalAPIController@destroy');
-
 Route::get('admin/conectivities', 'ConectivityAPIController@index');
 Route::post('admin/conectivities', 'ConectivityAPIController@store');
 Route::get('admin/conectivities/{conectivities}', 'ConectivityAPIController@show');
 Route::put('admin/conectivities/{conectivities}', 'ConectivityAPIController@update');
 Route::patch('admin/conectivities/{conectivities}', 'ConectivityAPIController@update');
 Route::delete('admin/conectivities{conectivities}', 'ConectivityAPIController@destroy');
+
+Route::get('admin/categories', 'CategoryAPIController@index');
+Route::post('admin/categories', 'CategoryAPIController@store');
+Route::get('admin/categories/{categories}', 'CategoryAPIController@show');
+Route::put('admin/categories/{categories}', 'CategoryAPIController@update');
+Route::patch('admin/categories/{categories}', 'CategoryAPIController@update');
+Route::delete('admin/categories{categories}', 'CategoryAPIController@destroy');
+
+
+Route::get('admin/categoryProjects', 'CategoryProjectAPIController@index');
+Route::post('admin/categoryProjects', 'CategoryProjectAPIController@store');
+Route::get('admin/categoryProjects/{categoryProjects}', 'CategoryProjectAPIController@show');
+Route::put('admin/categoryProjects/{categoryProjects}', 'CategoryProjectAPIController@update');
+Route::patch('admin/categoryProjects/{categoryProjects}', 'CategoryProjectAPIController@update');
+Route::delete('admin/categoryProjects{categoryProjects}', 'CategoryProjectAPIController@destroy');

@@ -6,16 +6,20 @@ use App\Http\Requests;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Location;
+use App\Models\ProjectImport;
 use App\Repositories\ProjectRepository;
 use App\Http\Controllers\AppBaseController as InfyOmBaseController;
+use Carbon\Carbon;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
 use App\Models\Project;
 use Flash;
+use Maatwebsite\Excel\Facades\Excel;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\File;
 
 class ProjectController extends InfyOmBaseController
 {
@@ -42,15 +46,111 @@ class ProjectController extends InfyOmBaseController
             ->with('projects', $projects);
     }
 
-    /**
-     * Show the form for creating a new Project.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('admin.projects.create');
-    }
+	/**
+	 * Show the form for creating a new Project.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		return view('admin.projects.create');
+	}
+
+	/**
+	 * Show the form for creating a new Project.
+	 *
+	 * @return Response
+	 */
+	public function import()
+	{
+		return view('admin.projects.importer');
+	}
+
+	/**
+	 * Show the form for creating a new Project.
+	 *
+	 * @return Response
+	 */
+	public function importPreview(File $file)
+	{
+
+		//$file = File::find($id);
+		$path = public_path('uploads/files/'.$file->filename);
+
+		$data = Excel::load($path, function($reader) {
+		})->get();
+
+		$return = [];
+
+		foreach ($data as $row){
+			if($row->city){
+
+				$row["date"] = (new Carbon($row->implementation_date))->toDateString();
+
+				$pi = new ProjectImport(json_decode(json_encode($row), true));
+
+
+
+				$return[] = $pi;
+			}
+		}
+
+		return $this->sendResponse($return,"");
+	}
+
+	/**
+	 * Store a newly created Project in storage.
+	 *
+	 * @param CreateProjectRequest $request
+	 *
+	 * @return Response
+	 */
+	public function importStore(File $file)
+	{
+		$path = public_path('uploads/files/'.$file->filename);
+
+		$data = Excel::load($path, function($reader) {
+		})->get();
+
+		$return = [];
+
+		foreach ($data as $row){
+			if($row->city){
+
+				$row["date"] = (new Carbon($row->implementation_date))->toDateString();
+
+				$pi = new ProjectImport(json_decode(json_encode($row), true));
+
+				$project = $this->projectRepository->create($pi->projectArray());
+
+				$location = Location::where('locality_name',$pi->city)->first();
+				$project->location()->associate($location);
+				$project->save();
+
+
+				$verticals  = $pi->getVerticalsArray(); // related ids
+				$pivotData = array_fill(0, count($verticals), ['user_id' => Sentinel::getUser()->id]);
+				$syncVerticals  = array_combine($verticals, $pivotData);
+
+
+				$project->verticals()->sync($syncVerticals);
+
+
+				$return[] = $project;
+			}
+		}
+
+		return $this->sendResponse($return,"");
+		/*$input = $request->all();
+
+		$project = $this->projectRepository->create($input);
+
+		$this->updateRelations($project,$request);
+
+		Flash::success('Project saved successfully.');*/
+
+		//return redirect(route('admin.projects.index'));
+	}
 
     /**
      * Store a newly created Project in storage.
