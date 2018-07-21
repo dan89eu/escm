@@ -95,7 +95,7 @@
                     <div class="panel-body squarebox square_boxs">
                         <div class="col-xs-12 pull-left nopadmar">
                             <div class="row">
-                                <div class="col-xs-4">
+                                <div class="col-xs-4 text-right">
                                     <small class="stat-label">Mobility</small>
                                     <h4 id="myTargetElement4.1"></h4>
                                 </div>
@@ -103,7 +103,7 @@
                                     <small class="stat-label">Citizen</small>
                                     <h4 id="myTargetElement4.2"></h4>
                                 </div>
-                                <div class="col-xs-4">
+                                <div class="col-xs-4 text-right">
                                     <small class="stat-label">Governance</small>
                                     <h4 id="myTargetElement4.3"></h4>
                                 </div>
@@ -111,7 +111,7 @@
                                     <small class="stat-label">Economy</small>
                                     <h4 id="myTargetElement4.4"></h4>
                                 </div>
-                                <div class="col-xs-4">
+                                <div class="col-xs-4 text-right">
                                     <small class="stat-label">Environment</small>
                                     <h4 id="myTargetElement4.5"></h4>
                                 </div>
