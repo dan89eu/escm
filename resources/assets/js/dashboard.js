@@ -14,7 +14,14 @@ var map5 = new GMaps({
 	panControl : true,
 	streetViewControl : false,
 	mapTypeControl: false,
-	overviewMapControl: false
+	overviewMapControl: false,
+	markerClusterer: function(map) {
+		options = {
+			gridSize: 40
+		}
+
+		return new MarkerClusterer(map, [], options);
+	}
 });
 var styles = [
 	{
@@ -196,30 +203,25 @@ var useOnComplete = false,
         decimal: '.' // character to use as a decimal
     };
 
-var demo = new CountUp("myTargetElement1", 12.52, 9500, 0, 6, options);
+var demo = new CountUp("myTargetElement1", 0, count_projects, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement2", 1, 100, 0, 6, options);
+var demo = new CountUp("myTargetElement2", 0, count_cities, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement3", 24.02, 5000, 0, 6, options);
+var demo = new CountUp("myTargetElement3", 0, count_providers, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement4", 1254, 8000, 0, 6, options);
+var demo = new CountUp("myTargetElement4.1", 0, count_41, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement1.1", 1254, 98000, 0, 6, options);
+var demo = new CountUp("myTargetElement4.2", 0, count_42, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement1.2", 1254, 396000, 0, 6, options);
+var demo = new CountUp("myTargetElement4.3", 0, count_43, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement2.1", 154, 920, 0, 6, options);
+var demo = new CountUp("myTargetElement4.4", 0, count_44, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement2.2", 2582, 3929, 0, 6, options);
+var demo = new CountUp("myTargetElement4.5", 0, count_45, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement3.1", 2582, 42000, 0, 6, options);
+var demo = new CountUp("myTargetElement4.6", 0, count_46, 0, 6, options);
 demo.start();
-var demo = new CountUp("myTargetElement3.2", 25858, 173929, 0, 6, options);
-demo.start();
-var demo = new CountUp("myTargetElement4.1", 2544, 56000, 0, 6, options);
-demo.start();
-var demo = new CountUp("myTargetElement4.2", 1584, 219864, 0, 6, options);
-demo.start();
+
 var my_posts = $("[rel=tooltip]");
 
 var size = $(window).width();

@@ -12,30 +12,30 @@
 <!-- Verticals Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('verticals', 'Verticala:') !!}
-    {!! Form::select('verticals[]', App\Models\Vertical::pluck('name','id'), null, ['class' => 'form-control select2','multiple', 'required']) !!}
+    {!! Form::select('verticals[]', App\Models\Vertical::pluck('name','id'), null, ['class' => 'form-control select2','multiple']) !!}
 </div>
 <!-- Connectivity Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('conectivities', 'Connectivities:') !!}
-    {!! Form::select('conectivities[]', App\Models\Conectivity::pluck('name','id'), null, ['class' => 'form-control select2','multiple', 'required']) !!}
+    {!! Form::select('conectivities[]', App\Models\Conectivity::pluck('name','id'), null, ['class' => 'form-control select2','multiple']) !!}
 </div>
 
 <!-- Beneficiaries Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('beneficiaries', 'Beneficiary:') !!}
-    {!! Form::select('beneficiaries[]', App\Models\Beneficiary::pluck('name','id'), null, ['class' => 'form-control select2','multiple', 'required']) !!}
+    {!! Form::select('beneficiaries[]', App\Models\Beneficiary::pluck('name','id'), null, ['class' => 'form-control select2','multiple']) !!}
 </div>
 
 <!-- Providers Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('providers', 'Provider:') !!}
-    {!! Form::select('providers[]', App\Models\Provider::pluck('name','id'), null, ['class' => 'form-control select2','multiple', 'required']) !!}
+    {!! Form::select('providers[]', App\Models\Provider::pluck('name','id'), null, ['class' => 'form-control select2','multiple']) !!}
 </div>
 
 <!-- Providers Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('infrastructures', 'Infrastructure:') !!}
-    {!! Form::select('infrastructures[]', App\Models\Infrastructure::pluck('name','id'), null, ['class' => 'form-control select2','multiple', 'required']) !!}
+    {!! Form::select('infrastructures[]', App\Models\Infrastructure::pluck('name','id'), null, ['class' => 'form-control select2','multiple']) !!}
 </div>
 
 <!-- Initialcost Field -->

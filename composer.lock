@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29bb3d2f474d3d3f32577a4ad55d71aa",
+    "content-hash": "cbe4f64df055c7dd05b6e98a3899586c",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -380,16 +380,16 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "4.3.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "2407515c00bd4148c6ce8156f5f82e1a6349cac3"
+                "reference": "e1911eb3299ee549343fdbfc3738a04b00c9389e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/2407515c00bd4148c6ce8156f5f82e1a6349cac3",
-                "reference": "2407515c00bd4148c6ce8156f5f82e1a6349cac3",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/e1911eb3299ee549343fdbfc3738a04b00c9389e",
+                "reference": "e1911eb3299ee549343fdbfc3738a04b00c9389e",
                 "shasum": ""
             },
             "require": {
@@ -400,6 +400,7 @@
                 "php": "^7.0"
             },
             "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.4.4",
                 "mockery/mockery": "^0.9.4",
                 "orchestra/database": "~3.5.0",
                 "orchestra/testbench": "~3.5.0",
@@ -438,7 +439,7 @@
                 "slug",
                 "sluggable"
             ],
-            "time": "2017-08-31T18:16:01+00:00"
+            "time": "2018-01-04T16:57:12+00:00"
         },
         {
             "name": "cviebrock/eloquent-taggable",
@@ -2539,6 +2540,7 @@
                 "xls",
                 "xlsx"
             ],
+            "abandoned": "phpoffice/phpspreadsheet",
             "time": "2015-05-01T07:00:55+00:00"
         },
         {

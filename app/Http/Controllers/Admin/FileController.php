@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use\App\Http\controllers\JoshController;
+use\App\Http\Controllers\JoshController;
 use App\File;
 use App\Helpers\Thumbnail;
 use App\Http\Requests;

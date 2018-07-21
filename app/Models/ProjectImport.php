@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -12,6 +13,7 @@ class ProjectImport extends Model
 
 
     public $fillable = [
+	    'item_no',
         'city',
         'smart_city_solution',
         'smart_economy',
@@ -83,6 +85,11 @@ class ProjectImport extends Model
 		    $errors[] = "smart_vertical";
 	    }
 
+	    $location = Location::where('locality_name',$this->city)->first();
+	    if(!$location){
+		    $errors[] = "no_city";
+	    }
+
 	    return $errors;
     }
 
@@ -107,6 +114,34 @@ class ProjectImport extends Model
 	    return $project;
     }
 
+	public function getCategoryArray(){
+
+		$categorys = [];
+
+		$tempCategory = explode(";",$this->category_in_smart_city_vertical_separated_by);
+		foreach ($tempCategory as $val)
+		{
+			$catId = Category::firstOrCreate(['code'=>$val]);
+			$categorys[] = $catId;
+		}
+
+		return $categorys;
+	}
+
+	public function getConnectivityArray(){
+
+		$return = [];
+
+		$temp = explode(";",$this->communication_infrastructure);
+		foreach ($temp as $val)
+		{
+			$catId = Conectivity::firstOrCreate(['name'=>$val]);
+			$return[] = $catId;
+		}
+
+		return $return;
+	}
+
     public function getVerticalsArray(){
     	$verticals = [];
 	    if($this->smart_economy){
@@ -129,5 +164,39 @@ class ProjectImport extends Model
 	    }
 	    return $verticals;
     }
+
+	public function getBeneficiaryArray(){
+		$return = [];
+
+		$temp = explode(";",$this->beneficiary_separated_by);
+		foreach ($temp as $val)
+		{
+			$cat = Beneficiary::where("slug", (new Slugify())->slugify($val))->first();
+			if(!$cat){
+				$cat = new Beneficiary(['name'=>$val]);
+				$cat->save();
+			}
+			$return[] = $cat->id;
+		}
+
+		return $return;
+	}
+
+	public function getProvidersArray(){
+		$return = [];
+
+		$temp = explode(";",$this->supplier_separated_by);
+		foreach ($temp as $val)
+		{
+			$cat = Provider::where("slug", (new Slugify())->slugify($val))->first();
+			if(!$cat){
+				$cat = new Provider(['name'=>$val]);
+				$cat->save();
+			}
+			$return[] = $cat->id;
+		}
+
+		return $return;
+	}
 
 }

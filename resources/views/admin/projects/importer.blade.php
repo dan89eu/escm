@@ -70,7 +70,7 @@
                         <div class="row">
                             <blockquote>
                                 <p>
-                                    File Upload widget with multiple file selection, progress bars, validation and preview images for jQuery.
+                                    Excel Importer
                                 </p>
                             </blockquote>
                             {!! Form::open(array('url' => URL::to('admin/file/createmulti'), 'method' => 'post', 'id'=>'fileupload', 'files'=> true)) !!}
@@ -246,7 +246,7 @@
 					            "scrollX": true,
 					            "data": dataSet,
 					            "colReorder": {
-						            order:[19,20,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
+						            order:[20,21,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
 					            },
 				            });
 			            }

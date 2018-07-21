@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,6 +12,8 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 class Conectivity extends Model
 {
     use SoftDeletes;
+
+	//use Sluggable;
 
     public $table = 'conectivities';
     
@@ -59,5 +62,19 @@ class Conectivity extends Model
 	public function projects()
 	{
 		return $this->belongsToMany(Project::class)->withTimestamps();
+	}
+
+	/**
+	 * Return the sluggable configuration array for this model.
+	 *
+	 * @return array
+	 */
+	public function sluggable()
+	{
+		return [
+			'slug' => [
+				'source' => 'locality_name'
+			]
+		];
 	}
 }

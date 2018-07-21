@@ -67,6 +67,11 @@ class Project extends Model
 		return $this->belongsToMany(Vertical::class)->withTimestamps();
 	}
 
+	public function categories()
+	{
+		return $this->belongsToMany(Category::class)->withTimestamps();
+	}
+
 	public function beneficiaries()
 	{
 		return $this->belongsToMany(Beneficiary::class)->withTimestamps();

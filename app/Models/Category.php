@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -42,4 +43,14 @@ class Category extends Model
     public static $rules = [
         'code' => 'required'
     ];
+
+	public static function boot()
+	{
+		parent::boot();
+
+		static::creating(function($model)
+		{
+			$model->user_id = Sentinel::getUser()->id;
+		});
+	}
 }

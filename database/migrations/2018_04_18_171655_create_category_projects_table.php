@@ -13,7 +13,7 @@ class CreateCategoryProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_projects', function (Blueprint $table) {
+        Schema::create('category_project', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->nullable();
             $table->integer('project_id')->nullable();
@@ -30,6 +30,6 @@ class CreateCategoryProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('category_projects');
+        Schema::drop('category_project');
     }
 }

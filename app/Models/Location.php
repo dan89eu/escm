@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -10,11 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
 
+	use Sluggable;
+
     public $table = 'locations';
-    
 
-
-    public $fillable = [
+	public $fillable = [
         'formatted_address',
         'county_name',
         'country_name',
@@ -69,4 +70,19 @@ class Location extends Model
 	{
 		return $this->hasMany(Project::class)->withTimestamps();
 	}
+
+	/**
+	 * Return the sluggable configuration array for this model.
+	 *
+	 * @return array
+	 */
+	public function sluggable()
+	{
+		return [
+			'slug' => [
+				'source' => 'locality_name'
+			]
+		];
+	}
+
 }

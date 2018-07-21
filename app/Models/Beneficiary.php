@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 
 
 class Beneficiary extends Model
 {
+	use Sluggable;
 
     public $table = 'beneficiaries';
 
@@ -59,4 +61,19 @@ class Beneficiary extends Model
 	{
 		return $this->hasMany(Contact::class);
 	}
+
+	/**
+	 * Return the sluggable configuration array for this model.
+	 *
+	 * @return array
+	 */
+	public function sluggable()
+	{
+		return [
+			'slug' => [
+				'source' => 'name'
+			]
+		];
+	}
+
 }

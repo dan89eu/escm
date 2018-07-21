@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class ProjectVertical extends Pivot
 {
 
-    public $table = 'project_verticals';
+    public $table = 'project_vertical';
 
 
 	public static function boot()

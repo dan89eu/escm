@@ -80,12 +80,17 @@ class ProjectController extends InfyOmBaseController
 		$data = Excel::load($path, function($reader) {
 		})->get();
 
+
 		$return = [];
+		$index = 0;
+
 
 		foreach ($data as $row){
-			if($row->city){
+			//$return[] = $row;
+			if(isset($row->city)){
 
 				$row["date"] = (new Carbon($row->implementation_date))->toDateString();
+				$row["item_no"] = $index++;
 
 				$pi = new ProjectImport(json_decode(json_encode($row), true));
 
@@ -113,34 +118,71 @@ class ProjectController extends InfyOmBaseController
 		})->get();
 
 		$return = [];
+		$index = 0;
+		$skipped = 0;
 
 		foreach ($data as $row){
 			if($row->city){
 
 				$row["date"] = (new Carbon($row->implementation_date))->toDateString();
-
+				$row["item_no"] = $index++;
 				$pi = new ProjectImport(json_decode(json_encode($row), true));
 
-				$project = $this->projectRepository->create($pi->projectArray());
+				if(count($pi->errors)>0)
+				{
+					$return[] = $pi;
+					$skipped++;
+					continue;
+				}
+				try {
 
-				$location = Location::where('locality_name',$pi->city)->first();
-				$project->location()->associate($location);
-				$project->save();
+					$project = $this->projectRepository->create($pi->projectArray());
+
+					$location = Location::where('locality_name',$pi->city)->first();
+					$project->location()->associate($location);
+					$project->save();
+
+					$verticals  = $pi->getVerticalsArray(); // related ids
+					$pivotData = array_fill(0, count($verticals), ['user_id' => Sentinel::getUser()->id]);
+					$syncVerticals  = array_combine($verticals, $pivotData);
+
+					$project->verticals()->sync($syncVerticals);
+
+					$category  = $pi->getCategoryArray(); // related ids
+					$pivotData = array_fill(0, count($category), ['user_id' => Sentinel::getUser()->id]);
+					$syncCategory  = array_combine($category, $pivotData);
+
+					$project->categories()->sync($syncCategory);
+
+					$connectivities  = $pi->getConnectivityArray(); // related ids
+					$pivotData = array_fill(0, count($connectivities), ['user_id' => Sentinel::getUser()->id]);
+					$syncConnectivities  = array_combine($connectivities, $pivotData);
+					$project->conectivities()->sync($syncConnectivities);
+
+					$beneficiaries  = $pi->getBeneficiaryArray(); // related ids
+					$pivotData = array_fill(0, count($beneficiaries), ['user_id' => Sentinel::getUser()->id]);
+					$syncBeneficiaries  = array_combine($beneficiaries, $pivotData);
+
+					$providers  = $pi->getProvidersArray(); // related ids
+					$pivotData = array_fill(0, count($providers), ['user_id' => Sentinel::getUser()->id]);
+					$syncProviders  = array_combine($providers, $pivotData);
 
 
-				$verticals  = $pi->getVerticalsArray(); // related ids
-				$pivotData = array_fill(0, count($verticals), ['user_id' => Sentinel::getUser()->id]);
-				$syncVerticals  = array_combine($verticals, $pivotData);
+					$project->beneficiaries()->sync($syncBeneficiaries);
+					$project->providers()->sync($syncProviders);
 
 
-				$project->verticals()->sync($syncVerticals);
-
-
-				$return[] = $project;
+					$return[] = $project;
+				}
+				catch (\Exception $e){
+					$return[] = $pi;
+					$skipped++;
+				}
 			}
 		}
 
-		return $this->sendResponse($return,"");
+
+		return $this->sendResponse(["total"=>$index,"skipped"=>$skipped,"data"=>$return],"");
 		/*$input = $request->all();
 
 		$project = $this->projectRepository->create($input);
