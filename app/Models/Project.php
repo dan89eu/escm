@@ -29,6 +29,8 @@ class Project extends Model
 	    'quality_indicators'
     ];
 
+    protected $appends = ["url"];
+
     /**
      * The attributes that should be casted to native types.
      *
@@ -105,6 +107,11 @@ class Project extends Model
 	public function conectivities()
 	{
 		return $this->belongsToMany(Conectivity::class)->withTimestamps();
+	}
+
+	public function getUrlAttribute()
+	{
+		return "detail.html";
 	}
 
 }
