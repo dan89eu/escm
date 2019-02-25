@@ -129,21 +129,6 @@ Route::get('verticals/{verticals}/edit', ['as'=> 'verticals.edit', 'uses' => 'Ve
 
 Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
 
-Route::get('projectVerticals', ['as'=> 'projectVerticals.index', 'uses' => 'project_verticalController@index']);
-Route::post('projectVerticals', ['as'=> 'projectVerticals.store', 'uses' => 'project_verticalController@store']);
-Route::get('projectVerticals/create', ['as'=> 'projectVerticals.create', 'uses' => 'project_verticalController@create']);
-Route::put('projectVerticals/{projectVerticals}', ['as'=> 'projectVerticals.update', 'uses' => 'project_verticalController@update']);
-Route::patch('projectVerticals/{projectVerticals}', ['as'=> 'projectVerticals.update', 'uses' => 'project_verticalController@update']);
-Route::get('projectVerticals/{id}/delete', array('as' => 'projectVerticals.delete', 'uses' => 'project_verticalController@getDelete'));
-Route::get('projectVerticals/{id}/confirm-delete', array('as' => 'projectVerticals.confirm-delete', 'uses' => 'project_verticalController@getModalDelete'));
-Route::get('projectVerticals/{projectVerticals}', ['as'=> 'projectVerticals.show', 'uses' => 'project_verticalController@show']);
-Route::get('projectVerticals/{projectVerticals}/edit', ['as'=> 'projectVerticals.edit', 'uses' => 'project_verticalController@edit']);
-
-});
-
-
-Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
-
 Route::get('locations', ['as'=> 'locations.index', 'uses' => 'LocationController@index']);
 Route::post('locations', ['as'=> 'locations.store', 'uses' => 'LocationController@store']);
 Route::get('locations/create', ['as'=> 'locations.create', 'uses' => 'LocationController@create']);
@@ -189,14 +174,14 @@ Route::get('categories/{categories}/edit', ['as'=> 'categories.edit', 'uses' => 
 
 Route::group(array('prefix' => 'admin/', 'middleware' => 'admin','as'=>'admin.'), function () {
 
-Route::get('categoryProjects', ['as'=> 'categoryProjects.index', 'uses' => 'Category_projectController@index']);
-Route::post('categoryProjects', ['as'=> 'categoryProjects.store', 'uses' => 'Category_projectController@store']);
-Route::get('categoryProjects/create', ['as'=> 'categoryProjects.create', 'uses' => 'Category_projectController@create']);
-Route::put('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.update', 'uses' => 'Category_projectController@update']);
-Route::patch('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.update', 'uses' => 'Category_projectController@update']);
-Route::get('categoryProjects/{id}/delete', array('as' => 'categoryProjects.delete', 'uses' => 'Category_projectController@getDelete'));
-Route::get('categoryProjects/{id}/confirm-delete', array('as' => 'categoryProjects.confirm-delete', 'uses' => 'Category_projectController@getModalDelete'));
-Route::get('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.show', 'uses' => 'Category_projectController@show']);
-Route::get('categoryProjects/{categoryProjects}/edit', ['as'=> 'categoryProjects.edit', 'uses' => 'Category_projectController@edit']);
+Route::get('categoryProjects', ['as'=> 'categoryProjects.index', 'uses' => 'CategoryProjectController@index']);
+Route::post('categoryProjects', ['as'=> 'categoryProjects.store', 'uses' => 'CategoryProjectController@store']);
+Route::get('categoryProjects/create', ['as'=> 'categoryProjects.create', 'uses' => 'CategoryProjectController@create']);
+Route::put('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.update', 'uses' => 'CategoryProjectController@update']);
+Route::patch('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.update', 'uses' => 'CategoryProjectController@update']);
+Route::get('categoryProjects/{id}/delete', array('as' => 'categoryProjects.delete', 'uses' => 'CategoryProjectController@getDelete'));
+Route::get('categoryProjects/{id}/confirm-delete', array('as' => 'categoryProjects.confirm-delete', 'uses' => 'CategoryProjectController@getModalDelete'));
+Route::get('categoryProjects/{categoryProjects}', ['as'=> 'categoryProjects.show', 'uses' => 'CategoryProjectController@show']);
+Route::get('categoryProjects/{categoryProjects}/edit', ['as'=> 'categoryProjects.edit', 'uses' => 'CategoryProjectController@edit']);
 
 });
